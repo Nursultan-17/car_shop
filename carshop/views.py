@@ -40,4 +40,13 @@ def CarCreateView(request):
         image = request.FILES.get('image')
         flower = Car(brand=brand,model=model,year=year,engine_capacity=engine_capacity, color=color,price=price, image=image)
         flower.save()
-        return CarsView(request)
+        return redirect('cars_url')
+
+def CarDeleteView(request):
+    if request.method == 'GET':
+        return render(request=request, template_name='car_delete_template.html')
+    elif request.method == 'POST':
+        car_delete = request.POST.get('model').capitalize()
+        instance = Car.objects.get(model=car_delete)
+        instance.delete()
+        return redirect('cars_url')

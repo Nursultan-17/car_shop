@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>car delete template</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <ul>
+        {% for car in cars %}
+        <li>
+            {{ car.brand }} - {{car.model}}
+        </li>
+    </ul>
+        {% endfor %}
+        <p>
+            <label for="model">Input Car Model To Delete:</label>
+            <input type="text" id="model" name="model" required>
+        </p>
+        <input type="submit" value="Delete Model">
+    </form>
+</body>
+</html>
