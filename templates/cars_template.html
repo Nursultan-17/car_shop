@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cars template</title>
+</head>
+<body>
+    <a href="{% url 'car_create_url' %}">Add New Car</a>
+    <br>
+
+    <ul>
+
+        {% for car in cars %}
+        <li>
+            {{ car.brand }}, {{car.model}} - {{car.price}}
+        </li>
+    </ul>
+          <p>
+             <a href="{% url 'car_detail_url' car.id %}">Get Info</a>
+          </p>
+
+        {% endfor %}
+
+</body>
+</html>

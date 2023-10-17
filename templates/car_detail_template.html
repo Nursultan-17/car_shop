@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>car detail template</title>
+</head>
+<body>
+<a href="{%url 'cars_url'%}">Get Cars list</a>
+    <div align="center">
+        <h1>{{ car.brand }}</h1>
+        <h3>{{ car.model }}</h3>
+        <h3>{{ car.year }}</h3>
+        <h3>{{ car.engine_capacity }}</h3>
+        <h3>{{ car.color }}</h3>
+        <h2>{{ car.price }}</h2>
+        {% if car.image %}
+            <img src="{{ car.image.url }}" height="600">
+        {% endif %}
+    </div>
+</body>
+</html>

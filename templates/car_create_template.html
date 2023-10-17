@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>car create template</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            <label for="brand">Input Car Brand:</label>
+            <input type="text" id="brand" name="brand" required>
+        </p>
+
+        <p>
+            <label for="model">Input Car Model:</label>
+            <input type="text" id="model" name="model" required>
+        </p>
+
+        <p>
+            <label for="year">Input Car Year:</label>
+            <input type="text" id="year" name="year" required>
+        </p>
+
+        <p>
+            <label for="engine_capacity">Input Car Engine capacity:</label>
+            <input type="text" id="engine_capacity" name="engine_capacity" required>
+        </p>
+
+        <p>
+            <label for="color">Input Flower Color:</label>
+            <input type="text" id="color" name="color" required>
+        </p>
+
+        <p>
+            <label for="price">Input Car Price:</label>
+            <input type="text" id="price" name="price" required>
+        </p>
+
+        <p>
+            <label for="image">Input Flower Image:</label>
+            <input type="file" id="image" name="image">
+        </p>
+
+        <input type="submit" value="Add Car">
+    </form>
+
+</body>
+</html>

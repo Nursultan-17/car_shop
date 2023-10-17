@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>carf template</title>
+</head>
+<body>
+    <a href="{%url 'cars_url'%}">Get Cars list</a>
+    <br>
+    <ul>
+    {% for car in car %}
+       <li>{{ car.brand }},{{car.model}}, - {{ car.price }}</li>
+    </ul>
+    <p>
+        <a href="{% url 'car_detail_url' car.id %}">Get Info</a>
+    </p>
+    {% endfor %}
+
+</body>
+</html>
