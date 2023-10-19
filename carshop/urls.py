@@ -7,5 +7,6 @@ urlpatterns = [
     path('cars/<str:car_brand>', CarFView, name='carf_url'),
     path('cr_car', CarCreateView, name='car_create_url'),
     path('dl_car', CarDeleteView, name='car_delete_url'),
+    path('up_car/<int:car_id>', CarUpdateView, name='car_update_url'),
 
 ]

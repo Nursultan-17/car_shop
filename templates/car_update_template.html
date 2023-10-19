@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>car update template</title>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            <label for="brand">Input Car Brand:</label>
+            <input type="text" id="brand" name="brand" value="{{cars.brand}}" required>
+        </p>
+
+        <p>
+            <label for="model">Input Car Model:</label>
+            <input type="text" id="model" name="model" value="{{cars.model}}" required>
+        </p>
+
+        <p>
+            <label for="year">Input Car Year:</label>
+            <input type="text" id="year" name="year" value="{{cars.year}}" required>
+        </p>
+
+        <p>
+            <label for="engine_capacity">Input Car Engine capacity:</label>
+            <input type="text" id="engine_capacity" name="engine_capacity" value="{{cars.engine_capacity}}" required>
+        </p>
+
+        <p>
+            <label for="color">Input Flower Color:</label>
+            <input type="text" id="color" name="color" value="{{cars.color}}" required>
+        </p>
+
+        <p>
+            <label for="price">Input Car Price:</label>
+            <input type="text" id="price" name="price" value="{{cars.price}}" required>
+        </p>
+
+        <p>
+            <label for="image">Input Flower Image:</label>
+            <input type="file" id="image" name="image" >
+        </p>
+
+        <input type="submit" value="Update Car">
+    </form>
+
+</body>
+</html>

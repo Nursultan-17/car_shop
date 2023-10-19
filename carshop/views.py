@@ -44,9 +44,32 @@ def CarCreateView(request):
 
 def CarDeleteView(request):
     if request.method == 'GET':
+
         return render(request=request, template_name='car_delete_template.html')
     elif request.method == 'POST':
         car_delete = request.POST.get('model').capitalize()
         instance = Car.objects.get(model=car_delete)
         instance.delete()
+        return redirect('cars_url')
+
+
+
+def CarUpdateView(request, car_id):
+    if request.method == 'GET':
+        car = Car.objects.get(id=car_id)
+        context = {
+            'cars': car,
+        }
+        return render(request=request, template_name='car_update_template.html', context=context)
+    elif request.method == 'POST':
+        car = Car.objects.get(id=car_id)
+        car.brand = request.POST.get('brand').capitalize()
+        car.model = request.POST.get('model').capitalize()
+        car.year = request.POST.get('year').capitalize()
+        car.engine_capacity = request.POST.get('engine_capacity').capitalize()
+        car.color = request.POST.get('color').capitalize()
+        car.price = request.POST.get('price').capitalize()
+        if 'image' in request.FILES:
+            car.image = request.FILES.get('image')
+        car.save()
         return redirect('cars_url')
