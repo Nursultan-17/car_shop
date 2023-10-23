@@ -1,0 +1,78 @@
+1) pip install pipenv - Установить pipenv(Один раз для всего компьютера)
+2) pipenv shell - Открыть консоль виртуального окружения(Если его нет, то pipenv его создаст)
+3) pip install django
+4) django-admin startproject core . - Создать ядро django проекта
+5) python manage.py migrate - Провести миграцию
+6) python manage.py createsuperuser - Создать главного админа
+7) python manage.py runserver - Запустить локальный сервер
+ctrl+c - Завершить действие/выключить локальный сервер
+8) python manage.py startapp blogapp - Создать приложение с именем blogapp
+9) Зайти в core/setting.py и добавить приложение в INSTALLED_APPS
+
+При создании новых моделей, мы должны объявить их django:
+    python manage.py makemigrations
+Провести миграцию:
+    python manage.py migrate
+
+Чтобы можно было управлять данными в новой модельке, ее нужно добавить в админку:
+1) Зайти в файл admin.py внутри приложения
+2) Импортировать все модели из .models(Если писать без точки, то он будет искать библиотеку с именем models):
+    from .models import *
+3) Зарегистрировать ее в админке
+    admin.site.register(Post)
+
+Заметки по полям(Field):
+1) models.CharField(max_length=) - Тот же самый VarChar, всегда необходимо указывать max_length=<ТУТ ДОЛЖНА БЫТЬ ДЛИНА>
+2) models.ForeignKey(<ИМЯ МОДЕЛИ>, on_delete=) - Внешний ключ,
+3) models.TextField - Text. Поле для хранения информации типа данных string
+4) models.DateTimeField - Поле для хранения Времени и даты в формате (yyyy-mm-dd hh:mm:ss:...)
+
+У всех Fields есть доп параметры null и blank.
+null - Если стоит True значит поле может быть null объект(None)
+blank - Если стоит True значит поле может быть пустым
+
+Generic Views - Джанго Генерики - Встроенные вьюшки. Используют только для учебных целей:
+1) ListView - Выгружает все данные из таблицы в виде листа на template
+2) DetailView - Выгружает данные только об одной записи в таблице(требует pk - Primary Key) на template
+3) UpdateView - Выгружает форму и принимает данные для обновления одной записи в таблице(требует pk - Primary Key) на template
+4) CreateView - Выгружает форму и принимает данные для создания записи в таблице на template
+5) DeleteView - Удаляет запись из таблицы(требует pk - Primary Key) на template
+
+Чтобы настроить путь до папки с темплейтами:
+0) Создать в папке с проектом еще одну папку для темплейтов
+1) В settings.py добавить import os
+2) Найти в settings.py лист TEMPLATES
+3) Внутри листа найти ключ 'DIRS': []
+4) Внутрь этого листа добавить os.path.join(BASE_DIR, '<имя_вашей_папки>')
+
+Чтобы настроить собственный urls для отдельного приложения:
+1) В папке приложения создать файл urls.py
+2) В папке с ядром проекта, найти файл urls.py
+3) Добавить новый импорт: from django.urls import include
+4) В лист urlpatterns добавить новый path: path('<Ваш роут маршрут>/', include('<Имя вашего приложения>.urls'))
+5) В новый urls.py добавить импорты:
+    from django.urls import path
+    from .views import *
+6) Создать в нем же новый лист: urlpatterns = []
+
+template - HTML страницы
+view - Логический блок
+url - Маршруты
+
+Синтаксис Djnago в HTML:
+{{ <имя_переменной> }} - Отобразить в этом месте данную переменную
+{% url '<имя_маршрута>' %} - вызвать url адрес любого маршрута(<имя_маршрута> это name внутри path в urls.py)
+
+
+Чтобы во вью правильно перессылать на другую страницу:
+1) Импортировать с django.urls либо reverse, reverse_lazy
+    from django.url import reverse
+или
+    from django.url import reverse_lazy
+
+reverse - Мгновенно пересылает на указанный маршрут
+reverse_lazy - Дожидается окончания всех процессов и потом пересылает на указанный маршрут
+
+2) Использовать reverse или reverse_lazy
+    reverse('<имя_маршрута>')
+    reverse_lazy('<имя_маршрута>')

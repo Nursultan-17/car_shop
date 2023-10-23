@@ -26,6 +26,11 @@
         </p>
 
         {% endfor %}
+<div align="right">
+    <a href="{% url 'log_in_url' %}">Sign in</a>
+    <a href="{% url 'registration_url' %}">Sign up</a>
+    <a href="{% url 'log_out_url' %}">Sign out</a>
+</div>
 
 </body>
 </html>
