@@ -5,6 +5,12 @@
     <title>cars template</title>
 </head>
 <body>
+<div align="right">
+    <a href="{% url 'log_in_url' %}">Sign in</a>
+    <a href="{% url 'registration_url' %}">Sign up1</a>
+    <a href="{% url 'log_out_url' %}">Sign out</a>
+    <a href="{% url 'sign_up_url' %}">Sign up2</a>
+</div>
     <a href="{% url 'car_create_url' %}">Add New Car</a>
     <br>
     <a href="{% url 'car_delete_url' %}">Car Model To Delete</a>
@@ -26,11 +32,7 @@
         </p>
 
         {% endfor %}
-<div align="right">
-    <a href="{% url 'log_in_url' %}">Sign in</a>
-    <a href="{% url 'registration_url' %}">Sign up</a>
-    <a href="{% url 'log_out_url' %}">Sign out</a>
-</div>
+
 
 </body>
 </html>

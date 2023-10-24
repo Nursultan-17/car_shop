@@ -38,8 +38,8 @@ def carCreateView(request):
         color = request.POST.get('color').capitalize()
         price = request.POST.get('price').capitalize()
         image = request.FILES.get('image')
-        flower = Car(brand=brand,model=model,year=year,engine_capacity=engine_capacity, color=color,price=price, image=image)
-        flower.save()
+        car = Car(brand=brand,model=model,year=year,engine_capacity=engine_capacity, color=color,price=price, image=image)
+        car.save()
         return redirect('cars_url')
 
 def carDeleteView(request):
@@ -78,7 +78,7 @@ def carUpdateView(request, car_id):
 
 def logInView(request):
     if request.user.is_authenticated:
-        return redirect('about_us_url')
+        return redirect('cars_url')
     if request.method == 'GET':
         return render(request=request, template_name='log_in.html')
     elif request.method == 'POST':
@@ -115,3 +115,21 @@ def registrationView(request):
             form.save()
             return redirect('log_in_url')
         return redirect('registration_url')
+
+
+def sign_upView(request):
+    if request.method == 'GET':
+        return render(request=request, template_name='user_create_template.html')
+    elif request.method == 'POST':
+        email = request.POST.get('email')
+        name = request.POST.get('name')
+        surname = request.POST.get('surname')
+        birth_date = request.POST.get('birth_date')
+        age = request.POST.get('age')
+        password = request.POST.get('password')
+        user = CustomUser(email=email,name=name,surname=surname,birth_date=birth_date,age=age,password=password)
+        user.save()
+        return redirect('cars_url')
+
+
+

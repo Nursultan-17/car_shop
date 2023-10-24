@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user create</title>
+</head>
+<body>
+    <form action="" method="post">
+        {% csrf_token %}
+        <p>
+            <label for="email">Input email:</label>
+            <input type="email" id="email" name="email" required>
+        </p>
+
+
+        <p>
+            <label for="name">Input name:</label>
+            <input type="text" id="name" name="name" >
+        </p>
+
+        <p>
+            <label for="surname">Input surname:</label>
+            <input type="text" id="surname" name="surname" >
+        </p>
+
+        <p>
+            <label for="birth_date">Input birth-date:</label>
+            <input type="date" id="birth_date" name="birth_date" >
+        </p>
+
+        <p>
+            <label for="age">Input age:</label>
+            <input type="number" id="age" name="age" >
+        </p>
+
+        <p>
+            <label for="password">Input password:</label>
+            <input type="password" id="password" name="password" >
+        </p>
+
+
+        <input type="submit" value="Sign up">
+
+    </form>
+
+</body>
+</html>
